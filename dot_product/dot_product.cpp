@@ -25,3 +25,16 @@ int main(int argc, char* argv[]) {
 
   for (int i = 0; i < n; ++i) {
     std::cin >> b[i];
+  }
+
+  double dot_product = 0.0;
+
+  for (int i = 0; i < n; ++i) {
+    dot_product += a[i] * b[i];
+  }
+
+  std::cout << dot_product;
+
+  delete[] a;
+  delete[] b;
+}
