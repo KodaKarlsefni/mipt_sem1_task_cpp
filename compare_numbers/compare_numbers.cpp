@@ -1,10 +1,5 @@
 #include <iostream>
 
-#ifdef _WIN32
-#include <fcntl.h>
-#include <io.h>
-#endif
-
 struct Number {
   char* start;
   int sign;
@@ -36,9 +31,6 @@ struct Number {
 };
 
 int main(int argc, char* argv[]) {
-#ifdef _WIN32
-  _setmode(_fileno(stdout), _O_BINARY);
-#endif
   if (argc != 3) {
     return 1;
   }
