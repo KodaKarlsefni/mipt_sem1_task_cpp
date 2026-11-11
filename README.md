@@ -1,1 +1,1 @@
-# MIPT_CPP_HomeTask
+# mipt_sem1_task_cpp
