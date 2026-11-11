@@ -1,10 +1,10 @@
 const char* CopyStr(const char* str) {
-  size_t len = 0;
+  int len = 0;
   while (str[len] != '\0') {
     ++len;
   }
-  char* copy = new char[len+1];
-  for (size_t i = 0; i <= len; ++i) {
+  char* copy = new char[len + 1];
+  for (int i = 0; i <= len; ++i) {
     copy[i] = str[i];
   }
   return copy;
@@ -12,46 +12,46 @@ const char* CopyStr(const char* str) {
 
 struct Node {
   const char* value;
-  Node *next;
+  Node* next;
 };
 
 struct Stack {
-  Node *head = nullptr;
-  size_t size = 0;
+  Node* head = nullptr;
+  int size = 0;
 };
 
-void Push(Stack& stack, const char* str) {
+void Push(Stack* stack, const char* str) {
   Node* new_node = new Node;
-  new_node -> value = CopyStr(str);
-  new_node -> next = stack.head;
-  stack.head = new_node;
-  stack.size += 1;
+  new_node->value = CopyStr(str);
+  new_node->next = stack->head;
+  stack->head = new_node;
+  stack->size += 1;
 }
 
-void Pop(Stack& stack) {
-  if (stack.head == nullptr) {
+void Pop(Stack* stack) {
+  if (stack->head == nullptr) {
     return;
   }
-  Node* new_head = stack.head -> next;
-  delete[] stack.head -> value;
-  delete stack.head;
-  stack.head = new_head;
-  stack.size -= 1;
+  Node* new_head = stack->head->next;
+  delete[] stack->head->value;
+  delete stack->head;
+  stack->head = new_head;
+  stack->size -= 1;
 }
 
-const char* Top(Stack& stack) {
-  if (stack.head == nullptr) {
+const char* Top(const Stack* stack) {
+  if (stack->head == nullptr) {
     return nullptr;
   }
-  return stack.head -> value;
+  return stack->head->value;
 }
 
-size_t Size(Stack& stack) {
-  return stack.size;
+int Size(const Stack* stack) {
+  return stack->size;
 }
 
-void Clear(Stack& stack) {
-  while (stack.head != nullptr) {
+void Clear(Stack* stack) {
+  while (stack->head != nullptr) {
     Pop(stack);
   }
 }
