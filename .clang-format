@@ -1,42 +1,47 @@
-# File format:
-# https://clang.llvm.org/docs/ClangFormatStyleOptions.html
----
+
 BasedOnStyle: Google
 ---
 Language: Cpp
 
-# ColumnLimit: 120 # default is 80
-IndentWidth: 4 # default is 2
-AccessModifierOffset: -2
+IndentWidth: 2
+TabWidth: 2
+UseTab: Never
+ColumnLimit: 80
+AccessModifierOffset: -1
+ContinuationIndentWidth: 4
+NamespaceIndentation: None
 
-# Do not glue the parameters into one line if they are splitted to several
-AllowAllParametersOfDeclarationOnNextLine: true
-BinPackParameters: false
-BinPackArguments: false
+SeparateDefinitionBlocks: Always
+BreakBeforeBraces: Attach
 
-# AllowShortFunctionsOnASingleLine: None
-AllowShortIfStatementsOnASingleLine: false
-AllowShortLambdasOnASingleLine: Empty
+AllowShortFunctionsOnASingleLine: None
+AllowShortBlocksOnASingleLine: Never
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortLambdasOnASingleLine: None
 
-DerivePointerAlignment: false # default is true and PointerAlignment is ignored
-PointerAlignment: Left
-ReferenceAlignment: Left # by default = PointerAlignment
-
-SortIncludes: CaseSensitive
-IncludeBlocks: Preserve
-PackConstructorInitializers: CurrentLine
+PackConstructorInitializers: Never
 BreakConstructorInitializers: BeforeColon
-# BreakConstructorInitializers: BeforeComma # functional programming
-BreakInheritanceList: BeforeColon
-# BreakInheritanceList: BeforeComma # functional programming
-AlignEscapedNewlines: Left
+BreakInheritanceList: AfterComma
 
-AlignAfterOpenBracket: AlwaysBreak
+DerivePointerAlignment: false
+PointerAlignment: Left
+ReferenceAlignment: Left
 
-# AlignTrailingComments: false
+SortIncludes: true
+SortUsingDeclarations: true
+IncludeBlocks: Regroup
+IncludeIsMainSourceRegex: '\$?'
+IncludeIsMainRegex: '([-_](test|unittest))?$'
+IncludeCategories:
+  - Regex: '^".*(/|\\).*'
+    Priority: 3
+  - Regex: '^".*'
+    Priority: 2
+  - Regex: '^<.*(/|\\).*'
+    Priority: 5
+  - Regex: '^<.*'
+    Priority: 4
+...
 
-InsertNewlineAtEOF: true # not compatible with clangd
-
-AlignOperands: Align
----
-# Other Languages
