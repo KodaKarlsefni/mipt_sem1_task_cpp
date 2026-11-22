@@ -75,7 +75,8 @@ void String::PushBack(char c) {
 
 // PopBack()
 void String::PopBack() {
-  data_[--size_] = '\0';
+  data_[size_ - 1] = '\0';
+  size_--;
 }
 
 // const Front() const
@@ -256,7 +257,7 @@ std::istream& operator>>(std::istream& istream, String& str) {
 
 // <<
 std::ostream& operator<<(std::ostream& ostream, const String& str) {
-  ostream << str.Data();
+  ostream.write(str.Data(), str.Size());
   return ostream;
 }
 
